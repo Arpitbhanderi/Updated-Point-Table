@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Sheets Auto-Refresh</title>
+    <style>
+        iframe {
+            width: 100%;
+            height: 100vh;
+            border: none;
+        }
+    </style>
+    <script>
+        // Function to reload the iframe with cache-busting
+        function reloadIFrame() {
+            var iframe = document.getElementById('sheetsIframe');
+            var src = iframe.src.split('?')[0]; // Get base URL
+            iframe.src = src + '?t=' + new Date().getTime(); // Add cache-busting parameter
+        }
+
+        // Set interval to reload iframe every 10 seconds (10000 milliseconds)
+        setInterval(reloadIFrame, 10000);
+    </script>
+</head>
+<body>
+    <!-- Embed Google Sheets using iframe -->
+    <iframe id="sheetsIframe" src="https://docs.google.com/spreadsheets/u/8/d/e/2PACX-1vTx5JsJYUQBRNwjhWuNPivu8EL2uUgebPHa5BZ-w3thwCgK23JjjUjPA1AW7xD5vt_BZ5jG8ZwcY9D5/pubhtml?gid=0&single=true"></iframe>
+</body>
+</html>
